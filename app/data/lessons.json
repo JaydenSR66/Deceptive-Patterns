@@ -1,0 +1,17 @@
+{
+  "title": "Introduction to Deceptive Patterns",
+  "cards": [
+    {
+      "id": 1,
+      "title": "Card 1?",
+      "content": "This is card 1",
+      "example": "Card 1 is the first card in the view."
+    },
+    {
+      "id": 2,
+      "title": "Card 2",
+      "content": "This is card 2",
+      "example": "Card 2 is the second card in the view."
+    }
+  ]
+}
