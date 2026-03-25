@@ -1,0 +1,9 @@
+# PhpStorm IDE files
+.idea/
+
+# PHP
+*.log
+*.cache
+
+# Dependencies
+/vendor/
