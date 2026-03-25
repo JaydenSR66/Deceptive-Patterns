@@ -12,6 +12,9 @@ function showCard(index)
     // Show the current card.
     cards[index].style.display = 'block';
 
+    // Update the counter.
+    counter.textContent = `Lesson ${index + 1} of ${cards.length}`;
+
     // Save the current progress to local storage.
     localStorage.setItem('lessonProgress', index);
 }
