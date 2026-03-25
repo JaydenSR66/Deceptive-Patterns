@@ -1,0 +1,28 @@
+{
+    "title": "Deceptive Patterns Quiz",
+    "description": "Test your knowledge of deceptive design patterns",
+    "questions": [
+        {
+            "question": "Question 1?",
+            "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "answer": 1,
+            "explanation": "Explanation for the correct answer to question 1."
+        },
+        {
+            "question": "Question 2?",
+            "options": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "answer": 2,
+            "explanation": "Explanation for the correct answer to question 2."
+        }
+    ]
+}
