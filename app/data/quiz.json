@@ -10,7 +10,7 @@
                 "C",
                 "D"
             ],
-            "answer": 1,
+            "answer": 0,
             "explanation": "Explanation for the correct answer to question 1."
         },
         {
@@ -21,7 +21,7 @@
                 "C",
                 "D"
             ],
-            "answer": 2,
+            "answer": 1,
             "explanation": "Explanation for the correct answer to question 2."
         }
     ]
