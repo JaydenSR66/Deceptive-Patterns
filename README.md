@@ -93,4 +93,4 @@ Place the `CMP308` folder in your server's web root (`htdocs` or `www`) and navi
 
 ## Team
 
-[Jayden Robertson](www.linkedin.com/in/jayden-robertson-72b206326), [Filip Shchedryvyi](https://www.linkedin.com/in/filip-shchedryvyi/), Connor Strachan, Jude Sommerville, Sebi Rascanu & Ishan Gimhana Punchihewa 
+[Jayden Robertson](https://www.linkedin.com/in/jayden-robertson66/), [Filip Shchedryvyi](https://www.linkedin.com/in/filip-shchedryvyi/), Connor Strachan, Jude Sommerville, Sebi Rascanu & Ishan Gimhana Punchihewa 
