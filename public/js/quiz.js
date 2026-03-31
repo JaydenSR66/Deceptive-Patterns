@@ -4,6 +4,9 @@ const counter = document.getElementById('questionCounter');
 // Load saved progress from localStorage.
 let currentQuestion = parseInt(localStorage.getItem('quizProgress')) || 0;
 
+//Tracks teh answer for every question
+const userAnswers = {};
+
 function showQuestion(index)
 {
     // Hide all questions.
@@ -63,6 +66,17 @@ function selectAnswer(button)
         // Highlight the correct answer.
         buttons[answer].classList.replace('btn-outline-primary', 'btn-success');
     }
+}
+
+async function submitQuiz(){
+
+    const submitBtn = document.getElementById('submitQuiz');
+    
+
+}
+
+function displayResult(result){
+
 }
 // Display the question the user was last on.
 showQuestion(currentQuestion);
