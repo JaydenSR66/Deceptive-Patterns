@@ -1,58 +1,36 @@
 const questions = document.querySelectorAll('#questions .card');
 const counter = document.getElementById('questionCounter');
-const progressText = document.getElementById('questionProgressText');
-const progressBar = document.getElementById('questionProgressBar');
 
 // Load saved progress from localStorage.
 let currentQuestion = parseInt(localStorage.getItem('quizProgress')) || 0;
 
-// Tracks the answer for every question
+//Tracks teh answer for every question
 const userAnswers = {};
 
-function showQuestion(index) {
+function showQuestion(index)
+{
     // Hide all questions.
     questions.forEach(question => question.style.display = 'none');
-
-    if (questions.length === 0) {
-        return;
-    }
-
-    if (index < 0) index = 0;
-    if (index >= questions.length) index = questions.length - 1;
-
-    currentQuestion = index;
 
     // Show the current question.
     questions[index].style.display = 'block';
 
     // Update the counter.
-    if (counter) {
-        counter.textContent = `Question ${index + 1} of ${questions.length}`;
-    }
-
-    // Update progress text.
-    if (progressText) {
-        progressText.textContent = `${index + 1}/${questions.length}`;
-    }
-
-    // Update progress bar.
-    if (progressBar) {
-        const percent = ((index + 1) / questions.length) * 100;
-        progressBar.style.width = `${percent}%`;
-        progressBar.setAttribute('aria-valuenow', index + 1);
-    }
+    counter.textContent = `Question ${index + 1} of ${questions.length}`;
 
     // Save progress to localStorage.
     localStorage.setItem('quizProgress', index);
 
-    // Show or hide the Submit button on last question
+    // Show or hide the Submit button on  last question
     const submitBtn = document.getElementById('submitQuiz');
-    if (submitBtn) {
+    if (submitBtn) 
+    {
         submitBtn.style.display = (index === questions.length - 1) ? 'inline-block' : 'none';
     }
 }
 
-function changeQuestion(direction) {
+function changeQuestion(direction)
+{
     currentQuestion += direction;
 
     if (currentQuestion < 0) currentQuestion = 0;
@@ -61,14 +39,15 @@ function changeQuestion(direction) {
     showQuestion(currentQuestion);
 }
 
-function selectAnswer(button) {
+function selectAnswer(button)
+{
     const selected = parseInt(button.dataset.index);
     const answer = parseInt(button.dataset.answer);
     const feedback = document.getElementById(`feedback-${currentQuestion}`);
     const explanation = document.getElementById(`explanation-${currentQuestion}`);
     const explanationText = button.closest('.card').dataset.explanation;
 
-    // Record the user answer for the question
+    //record the usser answer for the question
     userAnswers[currentQuestion] = selected;
 
     // Disable all option buttons after user answers.
@@ -76,12 +55,16 @@ function selectAnswer(button) {
     buttons.forEach(btn => btn.disabled = true);
 
     // If the user selected the correct answer, display correct message.
-    if (selected === answer) {
+    if (selected === answer)
+    {
         button.classList.replace('btn-outline-primary', 'btn-success');
         feedback.textContent = 'Correct!';
         feedback.classList.add('text-success');
     }
-    else {
+
+    // If user selected the incorrect answer, display incorrect message.
+    else
+    {
         button.classList.replace('btn-outline-primary', 'btn-danger');
         feedback.textContent = 'Incorrect!';
         feedback.classList.add('text-danger');
@@ -95,63 +78,68 @@ function selectAnswer(button) {
     }
 }
 
-async function submitQuiz() {
-    const submitBtn = document.getElementById('submitQuiz');
-    if (submitBtn) submitBtn.disabled = true;
+async function submitQuiz(){
 
-    try {
+   const submitBtn = document.getElementById('submitQuiz');
+    if (submitBtn) submitBtn.disabled = true;
+ 
+    try 
+    {
         const response = await fetch('/quiz_submit.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ answers: userAnswers }),
         });
-
+ 
         if (!response.ok) throw new Error(`Server error: ${response.status}`);
-
+ 
         const result = await response.json();
-
+ 
         // Clear saved progress now quiz is complete
         localStorage.removeItem('quizProgress');
-
-        // Pass score data to the result section for display
+ 
+        // Pass score data to the result section for display 
         displayResult(result);
-
+ 
     } catch (err) {
         console.error('Quiz submission failed:', err);
         if (submitBtn) submitBtn.disabled = false;
     }
+
+
 }
 
-function displayResult(result) {
+function displayResult(result){
     const resultSection = document.getElementById('quizResult');
-
+    
     if (!resultSection) return;
-
+ 
     // Hide the questions show the result section
     document.getElementById('questions').style.display = 'none';
     resultSection.style.display = 'block';
-
-    resultSection.dataset.score = result.score;
-    resultSection.dataset.total = result.total;
+ 
+    // Populate data attributes so the frontend can read them
+    resultSection.dataset.score      = result.score;
+    resultSection.dataset.total      = result.total;
     resultSection.dataset.percentage = result.percentage;
-    resultSection.dataset.band = result.band;
-
-    const scoreEl = document.getElementById('resultScore');
+    resultSection.dataset.band       = result.band;
+ 
+    // Populate text content elements if they exist in the HTML
+    const scoreEl      = document.getElementById('resultScore');
     const percentageEl = document.getElementById('resultPercentage');
-    const messageEl = document.getElementById('resultMessage');
-
-    if (scoreEl) scoreEl.textContent = `${result.score} / ${result.total}`;
-    if (percentageEl) percentageEl.textContent = `${result.percentage}%`;
+    const messageEl    = document.getElementById('resultMessage');
+ 
+    if (scoreEl)      scoreEl.textContent      = `${result.score} / ${result.total}`;
+    if (percentageEl) percentageEl.textContent  = `${result.percentage}%`;
     if (messageEl) {
-        const messages =
+        const messages = 
         {
             success: 'Great work! You have a solid understanding of deceptive patterns.',
             warning: 'Good effort! Review the explanations to strengthen your knowledge.',
-            danger: 'Keep learning! Go back through the lessons and try again.',
+            danger:  'Keep learning! Go back through the lessons and try again.',
         };
         messageEl.textContent = messages[result.band] || '';
     }
 }
-
 // Display the question the user was last on.
 showQuestion(currentQuestion);
