@@ -1,33 +1,49 @@
 const cards = document.querySelectorAll('#cards .card');
 const counter = document.getElementById('cardCounter');
+const progressText = document.getElementById('lessonProgressText');
+const progressBar = document.getElementById('lessonProgressBar');
 
-// Load the saved progress from local storage.
 let currentCard = parseInt(localStorage.getItem('lessonProgress')) || 0;
 
-function showCard(index)
-{
-    // Hide all cards.
-    cards.forEach(card => card.style.display = 'none');
+function showCard(index) {
+    cards.forEach(card => {
+        card.style.display = 'none';
+    });
 
-    // Show the current card.
-    cards[index].style.display = 'block';
+    if (cards.length === 0) {
+        return;
+    }
 
-    // Update the counter.
-    counter.textContent = `Lesson ${index + 1} of ${cards.length}`;
+    if (index < 0) {
+        index = 0;
+    }
 
-    // Save the current progress to local storage.
-    localStorage.setItem('lessonProgress', index);
+    if (index >= cards.length) {
+        index = cards.length - 1;
+    }
+
+    currentCard = index;
+    cards[currentCard].style.display = 'block';
+
+    if (counter) {
+        counter.textContent = `Lesson ${currentCard + 1} of ${cards.length}`;
+    }
+
+    if (progressText) {
+        progressText.textContent = `${currentCard + 1}/${cards.length}`;
+    }
+
+    if (progressBar) {
+        const percent = ((currentCard + 1) / cards.length) * 100;
+        progressBar.style.width = `${percent}%`;
+        progressBar.setAttribute('aria-valuenow', currentCard + 1);
+    }
+
+    localStorage.setItem('lessonProgress', currentCard);
 }
 
-function changeCard(direction)
-{
-    currentCard += direction;
-
-    if (currentCard < 0) currentCard = 0;
-    if (currentCard >= cards.length) currentCard = cards.length - 1;
-
-    showCard(currentCard);
+function changeCard(direction) {
+    showCard(currentCard + direction);
 }
 
-// Display the card the user was last on.
 showCard(currentCard);
