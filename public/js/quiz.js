@@ -1,6 +1,12 @@
 const questions = document.querySelectorAll('#questions .card');
 const counter = document.getElementById('questionCounter');
 
+
+// PROGRESS BAR (QUIZ)
+
+const progressText = document.getElementById('questionProgressText');
+const progressBar = document.getElementById('questionProgressBar');
+
 // Load saved progress from localStorage.
 let currentQuestion = parseInt(localStorage.getItem('quizProgress')) || 0;
 
@@ -17,6 +23,18 @@ function showQuestion(index)
 
     // Update the counter.
     counter.textContent = `Question ${index + 1} of ${questions.length}`;
+
+    
+    // UPDATE PROGRESS BAR
+
+        if (progressText) {
+            progressText.textContent = `${index + 1}/${questions.length}`;
+        }
+
+        if (progressBar) {
+            const percent = ((index + 1) / questions.length) * 100;
+            progressBar.style.width = `${percent}%`;
+        }
 
     // Save progress to localStorage.
     localStorage.setItem('quizProgress', index);
