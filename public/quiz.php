@@ -6,6 +6,22 @@ $questions = [];
 // Load the quiz controller which populates $title and $questions.
 require "../app/controllers/QuizController.php";
 ?>
+<div class="container mt-3">
+    <div class="d-flex justify-content-between mb-1">
+        <span>Question Progress</span>
+        <span id="questionProgressText"></span>
+    </div>
+
+    <div class="progress" style="height: 20px;">
+        <div
+            id="questionProgressBar"
+            class="progress-bar bg-success"
+            role="progressbar"
+            style="width: 0%;">
+        </div>
+    </div>
+</div>
+
 <!--
     Result section — hidden until the quiz is submited
     displayResult() in quiz js populates the data attributes and text elements
