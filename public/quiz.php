@@ -15,26 +15,58 @@ require "../app/controllers/QuizController.php";
         <title>Deceptive Patterns Quiz</title>
     </head>
 
-    <body>
-    </body>
+    <body class = "bg-light">
 
-    <footer>
+        <!-- Progress Bar -->
         <div class="container mt-3">
+
             <div class="d-flex justify-content-between mb-1">
+
                 <span>Question Progress</span>
-                 <span id="questionProgressText"></span>
+
+                <span id="questionProgressText"></span>
+
             </div>
 
             <div class="progress" style="height: 20px;">
+
                 <div
+
                     id="questionProgressBar"
                     class="progress-bar bg-success"
                     role="progressbar"
                     style="width: 0%;">
+
                 </div>
+
             </div>
+
         </div>
-    </footer>
+
+        <!-- Quiz Card -->
+        <div class = "card shadow-m mx-auto" styl="max-width: 600px;">
+
+            <div class = "card-body">
+
+                <!-- Question -->
+                <h4 class = "text - center mb-4" id = "questionText">
+                </h4>
+
+                <!-- Options -->
+                <div class = "list-group" id = "optionsContainer">
+
+                    <label class = "list-group-item d-flex align-items-center">
+                        <input class = "form-check-input me-2" type = "radio" name = "option">
+                    </lebel>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
 </html>
 
 
