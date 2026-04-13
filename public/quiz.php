@@ -44,22 +44,48 @@ require "../app/controllers/QuizController.php";
         </div>
 
         <!-- Quiz Card -->
-        <div class = "card shadow-m mx-auto" styl="max-width: 600px;">
+        <div class = "card shadow-sm mx-auto" style="max-width: 600px;">
 
             <div class = "card-body">
 
+                <!-- Question Title-->
+                <h2 class = "text-center mb-4" id = "questionText">
+                    <?php echo htmlspecialchars($title); ?>
+                </h2>
+
                 <!-- Question -->
-                <h4 class = "text - center mb-4" id = "questionText">
-                </h4>
+                <?php foreach ($questions as $qIndex => $question): ?>
 
-                <!-- Options -->
-                <div class = "list-group" id = "optionsContainer">
+                    <div class = "mb-4">
 
-                    <label class = "list-group-item d-flex align-items-center">
-                        <input class = "form-check-input me-2" type = "radio" name = "option">
-                    </lebel>
+                        <h3>
+                            <?php echo ($qIndex +1) . ". " . htmlspecialchars($question["question"]); ?>
+                        </h3>
 
-                </div>
+                        <!-- Options -->
+                        <div class = "list-group mt-2">
+                            
+                            <?php foreach ($question['options'] as $oIndex => $option): ?>
+
+                                <label class = "list-group-item d-flex align-items-center">
+
+                                    <input
+                                        class = "form-check-input me-2"
+                                        type = "radio"
+                                        name = "question_<?php echo $qIndex; ?>"
+                                        value = "<?php echo $oIndex; ?>">
+
+                                    <?php echo htmlspecialchars($option); ?>
+
+                                </label>
+
+                            <?php endforeach; ?>
+
+                        </div>
+
+                    </div>
+
+                <?php endforeach; ?>
 
             </div>
 
