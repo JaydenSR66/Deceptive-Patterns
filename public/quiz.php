@@ -20,26 +20,34 @@ require "../app/controllers/QuizController.php";
     <body class = "bg-light">
 
         <!-- Progress Bar -->
-        <div class="container mt-3">
+        <div class="container-fluid py-3 px-4">
 
-            <h5 id = "questionCounter"></h5>
+            <div class="container d-flex justify-content-center mt-3">
 
-            <div class="d-flex justify-content-between mb-1">
+                <div class="w-100" style="max-width: 900px;">
 
-                <span>Question Progress</span>
+                        <h5 id = "questionCounter"></h5>
 
-                <span id="questionProgressText"></span>
+                        <div class="d-flex justify-content-between mb-1">
 
-            </div>
+                            <span>Question Progress</span>
 
-            <div class="progress" style="height: 20px;">
+                            <span id="questionProgressText"></span>
 
-                <div
+                        </div>
 
-                    id="questionProgressBar"
-                    class="progress-bar bg-success"
-                    role="progressbar"
-                    style="width: 0%;">
+                         <div class="progress" style="height: 20px;">
+
+                            <div
+
+                                id="questionProgressBar"
+                                class="progress-bar bg-success"
+                                role="progressbar"
+                                style="width: 0%;">
+
+                            </div>
+
+                        </div>
 
                 </div>
 
@@ -47,64 +55,115 @@ require "../app/controllers/QuizController.php";
 
         </div>
 
-        <!-- Quiz Card -->
-        <div id = "questions">
+        <!-- Quiz Section -->
+        <div class="container d-flex justify-content-center mt-4">
 
-            <?php foreach ($questions as $qIndex => $question): ?>
+            <div id="questions" class="w-100" style="max-width: 900px;">
 
-                <div class="card mb-4"
-                    data-question-index="<?php echo $qIndex; ?>"
-                    data-explanation="<?php echo htmlspecialchars($question["explanation"] ?? '', ENT_QUOTES, "UTF-8"); ?>">
+                <?php foreach ($questions as $qIndex => $question): ?>
 
-                    <div class="card-body">
+                    <div
 
-                        <h2>
-                            <?php echo ($qIndex + 1) . ". " . htmlspecialchars($question["question"] ?? '', ENT_QUOTES, "UTF-8"); ?>
-                        </h2>
+                        class="card shadow-lg border-0 rounded-4 mb-4"
 
-                        <div class="list-group mt-2">
-                            <?php foreach (($question["options"] ?? []) as $oIndex => $option): ?>
+                        data-question-index="<?php echo $qIndex; ?>"
+
+                        data-explanation="<?php echo htmlspecialchars($question["explanation"] ?? '', ENT_QUOTES, "UTF-8"); ?>">
+
+                        <div class="card-body p-5">
+
+                            <!-- Question -->
+                            <h1 class="text-center fw-bold mb-5">
+
+                                <?php echo htmlspecialchars($question["question"] ?? '', ENT_QUOTES, "UTF-8"); ?>
+
+                            </h1>
+
+                            <!-- Options -->
+                            <div class="list-group rounded-4 overflow-hidden">
+
+                                <?php foreach (($question["options"] ?? []) as $oIndex => $option): ?>
+
+                                    <button
+
+                                        type="button"
+                                        class="list-group-item list-group-item-action py-4 fs-4 option-btn"
+                                        data-index="<?php echo $oIndex; ?>"
+                                        data-answer="<?php echo $question["answer"] ?? 0; ?>"
+                                        onclick="selectAnswer(this)">
+
+                                        <div class="d-flex align-items-center">
+
+                                            <input
+
+                                                class="form-check-input me-3"
+                                                type="radio"
+                                                name="question_<?php echo $qIndex; ?>"
+                                                disabled>
+
+                                            <span>
+
+                                                <?php echo htmlspecialchars($option, ENT_QUOTES, "UTF-8"); ?>
+
+                                            </span>
+
+                                        </div>
+
+                                    </button>
+
+                                <?php endforeach; ?>
+
+                            </div>
+
+                            <!-- Feedback -->
+                            <div id="feedback-<?php echo $qIndex; ?>" class="mt-3"></div>
+                            <div id="explanation-<?php echo $qIndex; ?>" class="mt-2"></div>
+
+                            <!-- Footer Buttons -->
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+
                                 <button
-                                    type="button"
-                                    class="btn btn-outline-primary option-btn"
-                                    data-index="<?php echo $oIndex; ?>"
-                                    data-answer="<?php echo $question["answer"] ?? 0; ?>"
-                                    onclick="selectAnswer(this)">
-                                    <?php echo htmlspecialchars($option, ENT_QUOTES, "UTF-8"); ?>
+
+                                    class="btn btn-link text-secondary fs-4 text-decoration-none"
+
+                                    onclick="changeQuestion(-1)">
+
+                                    <- Previous
+
                                 </button>
-                            <?php endforeach; ?>
+
+                                <button
+
+                                    class="btn btn-link text-secondary fs-4 text-decoration-none"
+
+                                    onclick="changeQuestion(1)">
+
+                                    Next ->
+
+                                </button>
+
+
+
+                            </div>
+
                         </div>
 
-                        <div id="feedback-<?php echo $qIndex; ?>" class="mt-2"></div>
-                        <div id="explanation-<?php echo $qIndex; ?>" class="mt-1"></div>
-
                     </div>
+
+                <?php endforeach; ?>
+
+                <div class = "text-center mt-4">
+
+                    <button
+                        id="submitQuiz"
+                        class="btn btn-primary px-5 py-2 fs-5 rounded-3 shadow-sm"
+                        onclick="submitQuiz()"
+                        style = "display: none;">
+                        Submit
+                    </button>
+
                 </div>
 
-            <?php endforeach; ?>
-
-            <div class = "text-center mb-4">
-
-                <button id = "submitQuiz" class="btn btn-primary" onclick="submitQuiz()" style="display:none;">
-                    Submit
-                </button>
-
-            </div>
-
-            <div id = "quizResult" class = "container mt-4" style = "display:none;">
-
-                <h3>Your Results</h3>
-                <p>Score: <span id= "resultScore"></span></p>
-                <p>Percentage: <span id = "resultPercentage"></span></p>
-                <p id = "resultMessage"></p>
-
-            </div>
-
-            <div class = "text-center mb-4">
-
-                <button class = "btn btn-secondary" onclick = "changeQuestion(-1)">Previous</button>
-
-                <button class = "btn btn-secondary" onclick = "changeQuestion(1)">Next</button>
             </div>
 
         </div>
@@ -112,8 +171,6 @@ require "../app/controllers/QuizController.php";
     </body>
 
 </html>
-
-
 
 <!--
     Result section — hidden until the quiz is submited
