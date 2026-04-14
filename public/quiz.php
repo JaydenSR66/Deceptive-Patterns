@@ -8,17 +8,21 @@ require "../app/controllers/QuizController.php";
 ?>
 
 <!DOCTYPE html>
+<html lang = "en">
     <head>
         <meta charset = "utf-8">
         <meta name = "viewport" content = "width = device-width, initial-scale = 1">
         <link href = 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css' rel = 'stylesheet' integrity = 'sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl' crossorigin = 'anonymous'>
-        <title>Deceptive Patterns Quiz</title>
+        <style> #questions .card {display:none;} </style>
+        <title> <?php echo htmlspecialchars($title ?: "Deceptive Patterns Quiz"); ?> </title>
     </head>
 
     <body class = "bg-light">
 
         <!-- Progress Bar -->
         <div class="container mt-3">
+
+            <h5 id = "questionCounter"></h5>
 
             <div class="d-flex justify-content-between mb-1">
 
@@ -44,49 +48,63 @@ require "../app/controllers/QuizController.php";
         </div>
 
         <!-- Quiz Card -->
-        <div class = "card shadow-sm mx-auto" style="max-width: 600px;">
+        <div id = "questions">
 
-            <div class = "card-body">
+            <?php foreach ($questions as $qIndex => $question): ?>
 
-                <!-- Question Title-->
-                <h2 class = "text-center mb-4" id = "questionText">
-                    <?php echo htmlspecialchars($title); ?>
-                </h2>
+                <div class="card mb-4"
+                    data-question-index="<?php echo $qIndex; ?>"
+                    data-explanation="<?php echo htmlspecialchars($question["explanation"] ?? '', ENT_QUOTES, "UTF-8"); ?>">
 
-                <!-- Question -->
-                <?php foreach ($questions as $qIndex => $question): ?>
+                    <div class="card-body">
 
-                    <div class = "mb-4">
+                        <h2>
+                            <?php echo ($qIndex + 1) . ". " . htmlspecialchars($question["question"] ?? '', ENT_QUOTES, "UTF-8"); ?>
+                        </h2>
 
-                        <h3>
-                            <?php echo ($qIndex +1) . ". " . htmlspecialchars($question["question"]); ?>
-                        </h3>
-
-                        <!-- Options -->
-                        <div class = "list-group mt-2">
-                            
-                            <?php foreach ($question['options'] as $oIndex => $option): ?>
-
-                                <label class = "list-group-item d-flex align-items-center">
-
-                                    <input
-                                        class = "form-check-input me-2"
-                                        type = "radio"
-                                        name = "question_<?php echo $qIndex; ?>"
-                                        value = "<?php echo $oIndex; ?>">
-
-                                    <?php echo htmlspecialchars($option); ?>
-
-                                </label>
-
+                        <div class="list-group mt-2">
+                            <?php foreach (($question["options"] ?? []) as $oIndex => $option): ?>
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-primary option-btn"
+                                    data-index="<?php echo $oIndex; ?>"
+                                    data-answer="<?php echo $question["answer"] ?? 0; ?>"
+                                    onclick="selectAnswer(this)">
+                                    <?php echo htmlspecialchars($option, ENT_QUOTES, "UTF-8"); ?>
+                                </button>
                             <?php endforeach; ?>
-
                         </div>
 
+                        <div id="feedback-<?php echo $qIndex; ?>" class="mt-2"></div>
+                        <div id="explanation-<?php echo $qIndex; ?>" class="mt-1"></div>
+
                     </div>
+                </div>
 
-                <?php endforeach; ?>
+            <?php endforeach; ?>
 
+            <div class = "text-center mb-4">
+
+                <button id = "submitQuiz" class="btn btn-primary" onclick="submitQuiz()" style="display:none;">
+                    Submit
+                </button>
+
+            </div>
+
+            <div id = "quizResult" class = "container mt-4" style = "display:none;">
+
+                <h3>Your Results</h3>
+                <p>Score: <span id= "resultScore"></span></p>
+                <p>Percentage: <span id = "resultPercentage"></span></p>
+                <p id = "resultMessage"></p>
+
+            </div>
+
+            <div class = "text-center mb-4">
+
+                <button class = "btn btn-secondary" onclick = "changeQuestion(-1)">Previous</button>
+
+                <button class = "btn btn-secondary" onclick = "changeQuestion(1)">Next</button>
             </div>
 
         </div>
@@ -107,5 +125,5 @@ require "../app/controllers/QuizController.php";
       data-percentage  e.g. "60"
       data-band        "success" | "warning" | "danger"
 -->
-<script src="/js/bootstrap.bundle.min.js"></script>
-<script src="/js/quiz.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/quiz.js"></script>
