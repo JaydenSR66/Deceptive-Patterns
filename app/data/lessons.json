@@ -3,15 +3,75 @@
   "cards": [
     {
       "id": 1,
-      "title": "Card 1?",
-      "content": "This is card 1",
-      "example": "Card 1 is the first card in the view."
+      "title": "Roach Motel",
+      "content": "A Roach Motel is a tactic used that makes it easy for users to sign up for a service but difficult for them to cancel. Its purpose is to trap users in a cycle of staying subscribed as their patience wears in attempts to cancel.",
+      "example": "This could be subscribing to an email service. having the unsubscribe button hidden through links or unsuggestive wording just to be able to cancel. Many users would have difficulty navigating through to be able to find the option in which they would rather just stay subscribed"
     },
     {
       "id": 2,
-      "title": "Card 2",
-      "content": "This is card 2",
-      "example": "Card 2 is the second card in the view."
+      "title": "Fake Scarcity",
+      "content": "Fake Scarcity leans in on emotional manipulation, by making the user think there is a limited amount of something and they are going to miss out, leading them to make impulse puchases.",
+      "example": "Some websites make fake countdowns of an item that they may be on a flash sale or that they say will be leaving once the timer is over, only for the countdown to be renewed the next day. Booking platforms use messages such as having only one room left to make users feel like they need to book now."
+    },
+    {
+      "id": 3,
+      "title": "Default Opt-ins or sneak into basket",
+      "content": "This dark pattern technique is when sites add items into user’s baskets when online shopping without their consent, banking on the user not noticing during the checkout process.",
+      "example": "Sites have been shown to bundle in memberships to a site, or small purchases such as a magazine which many customers would not notice."
+    },
+    {
+      "id": 4,
+      "title": "Confirm shaming",
+      "content": "Users are made into feeling guilt-tripped into agreeing to something they otherwise wouldn’t by using manipulative wording that makes them feel bad for saying no.",
+      "example": "Sometimes websites have opt-out options that are labeled with negative language, having messages like “No, I don’t want to save money” to discourage users from not accepting their services."
+    },
+    {
+      "id": 5,
+      "title": "Hidden Cost",
+      "content": "Hidden costs are when there are unexpected fees or charges during the checkout process that are not fully displayed beforehand.",
+      "example": "This is common in food delivery apps where there is an abundance of fees and service charges added at the point of payment. Sites used for booking tickets for events or concerts are also suscept to this."
+    },
+    {
+      "id": 6,
+      "title": "Bundled Consent",
+      "content": "Users are forced into agreeing to something extra and unrelated if they wish to complete an action.",
+      "example": "Some websites force users to consent to data sharing if they wish to simply access the website, where if they decline, they are denied access. Sometimes sites will also combine signing up for a newsletter with accepting terms and conditions giving the user no other option to continue."
+    },
+    {
+      "id": 7,
+      "title": "Free Trial Trap",
+      "content": "Users can sign up for a “free trial” to a service but are automatically charged without a clear warning.",
+      "example": "This is typically done by subscription sites where the user will be offered a seven day trial, in which they need to enter their payment information to get the trial. The company is then banking on the customer forgetting to cancel their subscription after the trial ends locking them into a payment."
+    },
+    {
+      "id": 8,
+      "title": "Price Comparison Prevention",
+      "content": "This tactic purposely obscures correct pricing information, making comparisons difficult for the user.",
+      "example": "Mobile carries will sometimes display information such as mobile data limits in alternating formats such as having some data options display as per day whereas some are per month. Which makes it confusing for the user to make a proper decision."
+    },
+    {
+      "id": 9,
+      "title": "Fake Pricing/Deals",
+      "content": "This is when E-Commerce sites have an item displayed at a fake discount, and the “Real” price is artificially inflated to trick the user into thinking they are getting a good deal.",
+      "example": "Websites typically use this tactic when they are having a sale, there could be an item listed for $300, and when it is time for the sale to come around, the new listing will show that the items full price is $400 and the sale price is $300."
+    },
+    {
+      "id": 10,
+      "title": "Nagging",
+      "content": "Constant prompts and pop-ups in the users face that urge them to make specific choices they otherwise wouldn’t.",
+      "example": "This could be frequent notifications for signing up for a newsletter while browsing a site that blocks you from doing anything else until you either confirm the signup or deny it, which just continues to give you pop-ups."
+    },
+    {
+      "id": 11,
+      "title": "Disguised Ads",
+      "content": "These ads are intended to blend in with the sites interface elements to trick users into clicking and engaging with them.",
+      "example": "A very common example of this is fake download buttons on software download sites. Users are tricked into clicking these buttons thinking they are going to get the displayed file but are instead redirected to advertisements or even given malware."
+    },
+    {
+      "id": 12,
+      "title": "Interface Interference",
+      "content": "This is a tactic that uses poorly designed sites such as bad colour contrast to hide information from the user.",
+      "example": "Sometimes sites will have fine print in a very faint hard to read colour compared to the page background which the user may not notice, another example is having a confirm or deny button on a page, where the confirm option is much more vibrant and on display than the deny, tricking users into potentially accepting something they wouldn’t otherwise."
     }
   ]
 }
