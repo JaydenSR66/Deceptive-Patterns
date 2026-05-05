@@ -171,6 +171,32 @@ require "../app/controllers/QuizController.php";
     </body>
 
 </html>
+        <title>Deceptive Patterns Quiz</title>
+    </head>
+
+    <body>
+    </body>
+
+    <footer>
+        <div class="container mt-3">
+            <div class="d-flex justify-content-between mb-1">
+                <span>Question Progress</span>
+                 <span id="questionProgressText"></span>
+            </div>
+
+            <div class="progress" style="height: 20px;">
+                <div
+                    id="questionProgressBar"
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 0%;">
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>
+
+
 
 <!--
     Result section — hidden until the quiz is submited
