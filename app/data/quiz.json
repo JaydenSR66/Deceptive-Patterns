@@ -1,28 +1,171 @@
 {
-    "title": "Deceptive Patterns Quiz",
-    "description": "Test your knowledge of deceptive design patterns",
-    "questions": [
-        {
-            "question": "Question 1?",
-            "options": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
-            "answer": 0,
-            "explanation": "Explanation for the correct answer to question 1."
-        },
-        {
-            "question": "Question 2?",
-            "options": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
-            "answer": 1,
-            "explanation": "Explanation for the correct answer to question 2."
-        }
-    ]
+  "title": "Deceptive Patterns Quiz",
+  "description": "Test your knowledge of deceptive design patterns",
+  "questions": [
+    {
+      "question": "Which one of these deceptive patterns involves making a service easy to sign up for but difficult to opt out off?",
+      "options": [
+        "Default Opt-In",
+        "Hidden Cost",
+        "Roach Motel",
+        "Fake Scarcity"
+      ],
+      "answer": 2,
+      "explanation": "Roach Motel is the patterns where the process of cancelling a service is more difficult compared to signing in."
+    },
+    {
+      "question": "Which one of these options describes the Fake Scarcity patterns?",
+      "options": [
+        "Trick users in impulse purchases by limiting the availability of a product",
+        "Guilt-Tripping users in agreeing to something they would not do in normal circumstances",
+        "Users are charged automatically without warning after using a free trial",
+        "The proper pricing information is obstracted, making price comparison more difficult"
+      ],
+      "answer": 0,
+      "explanation": "In Fake Scarcity, the user is tricked into thinking there is a limited stock of an item, making them more likely to make an impulsive purchase."
+    },
+    {
+      "question": "Which one of these patterns involves the process of adding additional items in a user’s basket without their consent?",
+      "options": [
+        "Confirm Sharing",
+        "Default Opt-In",
+        "Hidden Cost",
+        "Bundled Consent"
+      ],
+      "answer": 1,
+      "explanation": "Default Opt-In is the pattern where an item is added to a users' basket without their knowledge in hopes of not noticing it before the checkout process is finished."
+    },
+    {
+      "question": "Which one of these options describe the Hidden Cost pattern?",
+      "options": [
+        "An item is displayed at a fake discount, and the “Real” price is artificially inflated",
+        "The correct pricing information is obscured",
+        "Users are charged for a service without warning right after a free trial expires",
+        "Unexpected costs are initially hidden before the checkout process"
+      ],
+      "answer": 3,
+      "explanation": "Hidden Cost is the pattern where additional fees are initially hidden from the user, only to be added during the checkout process."
+    },
+    {
+      "question": "Which one of these options describes the Disguised Ads pattern?",
+      "options": [
+        "Sites are poorly designed in hope of making crucial information harder to be read by the user",
+        "Prompts and pop-ups are constantly displayed to the user",
+        "Ads are designed to blend in a site’s interface, in hope of tricking the user into clicking and engaging with them",
+        "Correct pricing information is obscured"
+      ],
+      "answer": 2,
+      "explanation": "Disguised Ads involves the process to make the adds blend into the site’s layout, increasing the chances of users interacting with them."
+    },
+    {
+      "question": "Which one of these patterns involves the process of displaying a fake discount, with an inflated price as a before price?",
+      "options": [
+        "Fake Pricing / Deals",
+        "Bundled Consent",
+        "Free Trial Trap",
+        "Nagging"
+      ],
+      "answer": 0,
+      "explanation": "This pattern involves in tricking the user into thinking a sale for a specific price happens by displaying a fake discount price and a fake before price."
+    },
+    {
+      "question": "Which one of these options involves the process of guilt tripping the user into agreeing to something they wouldn't do in normal circumstances?",
+      "options": [
+        "Free Trial Trap",
+        "Confirm Shaming",
+        "Nagging",
+        "Fake Scarcity"
+      ],
+      "answer": 1,
+      "explanation": "Confirm Shaming is the patterns where a user is forced to agree by using manipulative wording that makes them think bad for saying no."
+    },
+    {
+      "question": "Which one of these options describe the Bundled Consent pattern?",
+      "options": [
+        "Users find cancelling a service harder or mor tedious than signing up for it",
+        "Items are added to a user’s basket without their knowledge",
+        "Users are forced to agree to something extra",
+        "Additional costs are hidden before the checkout process"
+      ],
+      "answer": 2,
+      "explanation": "Bundled Consent is the pattern where a user is forced to agree to something extra if they wish to complete an action."
+    },
+    {
+      "question": "Which one of these patterns involves constantly showing pop-ups or prompts to pressure the user into making a decision?",
+      "options": [
+        "Interface Interference",
+        "Nagging",
+        "Fake Pricing / Deals",
+        "Hidden Cost"
+      ],
+      "answer": 1,
+      "explanation": "Nagging is the pattern where users are repeatedly interrupted with prompts or pop-ups, pressuring them into taking an action they might not otherwise choose."
+    },
+    {
+      "question": "Which one of these options describes the Free Trial Trap pattern?",
+      "options": [
+        "Users are tricked into buying items through fake discounts",
+        "Users are automatically charged after a free trial ends without clear warning",
+        "Users are forced to agree to additional terms",
+        "Pricing information is hidden during checkout"
+      ],
+      "answer": 1,
+      "explanation": "Free Trial Trap occurs when users sign up for a free trial but are automatically charged once it ends, often without clear reminders."
+    },
+    {
+      "question": "Which one of these patterns involves making it difficult for users to compare prices between products?",
+      "options": [
+        "Hidden Cost",
+        "Fake Scarcity",
+        "Price Comparison Prevention",
+        "Confirm Shaming"
+      ],
+      "answer": 2,
+      "explanation": "This pattern obscures or complicates pricing information, making it harder for users to compare options and make informed decisions."
+    },
+    {
+      "question": "Which one of these options describes the Interface Interference pattern?",
+      "options": [
+        "Users are tricked into impulse purchases with fake urgency",
+        "The design of the interface is manipulated to mislead users or hide information",
+        "Items are added to a basket without consent",
+        "Users are charged after a free trial"
+      ],
+      "answer": 1,
+      "explanation": "Interface Interference uses design tricks like poor contrast or misleading layouts to confuse users or hide important details."
+    },
+    {
+      "question": "Which one of these patterns involves forcing users to accept additional conditions to proceed?",
+      "options": [
+        "Bundled Consent",
+        "Nagging",
+        "Fake Pricing / Deals",
+        "Roach Motel"
+      ],
+      "answer": 0,
+      "explanation": "Bundled Consent forces users to agree to extra, often unrelated conditions if they want to complete an action."
+    },
+    {
+      "question": "Which one of these options describes the Default Opt-In pattern?",
+      "options": [
+        "Users are tricked into thinking items are limited",
+        "Users are repeatedly shown pop-ups",
+        "Items or services are automatically selected or added without user consent",
+        "Prices are hidden until checkout"
+      ],
+      "answer": 2,
+      "explanation": "Default Opt-In occurs when options are pre-selected or items are added without the user’s knowledge, relying on them not noticing."
+    },
+    {
+      "question": "Which one of these patterns involves manipulating users by making them feel like they will miss out?",
+      "options": [
+        "Confirm Shaming",
+        "Fake Scarcity",
+        "Hidden Cost",
+        "Disguised Ads"
+      ],
+      "answer": 1,
+      "explanation": "Fake Scarcity creates a false sense of urgency by suggesting limited availability, pushing users to act quickly out of fear of missing out."
+    }
+  ]
 }
